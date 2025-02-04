@@ -1,13 +1,22 @@
 #include "Bureaucrat.hpp"
 #include <limits>
+#include <string> 
 
-Bureaucrat::Bureaucrat() : grade(150), name("Default Bureaucrat") {}
+Bureaucrat::Bureaucrat() : name("Default Bureaucrat"), grade(150) {}
+Bureaucrat::~Bureaucrat(){}
 
-Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name) {
-    if (grade > std::numeric_limits<int>::max())
-        throw GradeTooHighException();
-    if (grade < std::numeric_limits<int>::min())
+Bureaucrat::Bureaucrat(const std::string& name, unsigned int grade) : name(name)
+{
+    if (grade > 150)
+    {
+        std::cout << name << "'s "; 
         throw GradeTooLowException();
+    }
+    if (grade < 1)
+    {
+        std::cout << name << "'s ";
+        throw GradeTooHighException();
+    }
     this->grade = grade;
 }
 
@@ -15,10 +24,44 @@ Bureaucrat::Bureaucrat(const Bureaucrat& other) : name(other.name), grade(other.
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 {
-    if (this != &other)
-    {
-        this->name = name;
-        this->grade = other.grade;
-    }
+    (void)other;
     return *this;
 }
+
+std::string Bureaucrat::getName() const
+{
+    return name;
+}
+
+unsigned int Bureaucrat::getGrade() const
+{
+    return grade;
+}
+
+void Bureaucrat::incrementGrade(unsigned int increment)
+{
+    if (grade - increment < 1)
+    {
+        std::cout << this->name << "'s ";
+        throw GradeTooHighException();
+    }
+    grade -= increment;
+}
+
+void Bureaucrat::decrementGrade(unsigned int decrement)
+{
+    if (grade + decrement > 150)
+    {
+        std::cout << this->name << "'s ";
+        throw GradeTooLowException();
+    }
+    grade += decrement;
+}
+
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
+{
+    os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << "." << std::endl;
+    return (os);
+}
+
