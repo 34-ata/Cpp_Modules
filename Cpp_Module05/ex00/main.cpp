@@ -31,6 +31,28 @@ int main(void)
 	{
 		std::cerr << e.what();
 	}
+	try
+	{
+		Bureaucrat bro4("Bro4", 150);
+		std::cout << bro4;
+		bro4.decrementGrade(1);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what();
+	}
+	try
+	{
+		Bureaucrat bro5("Bro5", 1);
+		std::cout << bro5;
+		bro5.incrementGrade(1);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what();
+	}
+	
+	
 	
 	return (0);
 }
