@@ -57,10 +57,26 @@ void Bureaucrat::decrementGrade(unsigned int decrement)
     grade += decrement;
 }
 
+void Bureaucrat::signForm(AForm& form)
+{
+    form.beSigned(*this);
+}
+
+void Bureaucrat::executeForm(const AForm &form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << *this << " executed " << form << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << *this << " couldn't execute " << form << " because " << e.what() << std::endl;
+	}
+}
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
 {
     os << bureaucrat.getName() << " [" << bureaucrat.getGrade() << "]" << std::endl;
     return (os);
 }
-
