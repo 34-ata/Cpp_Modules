@@ -57,12 +57,12 @@ void Bureaucrat::decrementGrade(unsigned int decrement)
     grade += decrement;
 }
 
-void Bureaucrat::signForm(AForm& form)
+void Bureaucrat::signForm(Form& form)
 {
     form.beSigned(*this);
 }
 
-void Bureaucrat::executeForm(const AForm &form) const
+void Bureaucrat::executeForm(const Form &form) const
 {
 	try
 	{

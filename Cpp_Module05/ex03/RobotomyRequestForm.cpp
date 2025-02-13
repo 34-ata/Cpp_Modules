@@ -2,7 +2,7 @@
 #include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
-	: AForm("Robotomy Request Form", 72, 45), target(target) {  }
+	: Form("Robotomy Request Form", 72, 45), target(target) {  }
 
 RobotomyRequestForm::~RobotomyRequestForm() {  }
 
@@ -13,10 +13,10 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 void RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
 	if (!getIsItSigned())
-		throw AForm::GradeTooLowException();
+		throw Form::GradeTooLowException();
 
 	if (executor.getGrade() > getGradeToExecute())
-		throw AForm::GradeTooLowException();
+		throw Form::GradeTooLowException();
 
 	std::cout << "****DADADADA****" << std::endl;
     if (rand() % 2 == 0)

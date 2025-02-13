@@ -12,13 +12,13 @@
 
 class Bureaucrat;
 
-class AForm
+class Form
 {
 
     public:
-        AForm();
-        AForm(const std::string& name, unsigned int grade_to_sign, unsigned int grade_to_execute);
-        virtual ~AForm();
+        Form();
+        Form(const std::string& name, unsigned int grade_to_sign, unsigned int grade_to_execute);
+        virtual ~Form();
     public:
         std::string getName() const;
         unsigned int getGradeToSign() const;
@@ -50,6 +50,6 @@ class AForm
         };
 };
 
-std::ostream& operator<<(std::ostream& os, const AForm& form);
+std::ostream& operator<<(std::ostream& os, const Form& form);
 
 #endif
