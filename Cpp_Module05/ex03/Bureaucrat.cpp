@@ -57,21 +57,21 @@ void Bureaucrat::decrementGrade(unsigned int decrement)
     grade += decrement;
 }
 
-void Bureaucrat::signForm(Form& form)
+void Bureaucrat::signForm(AForm& AForm)
 {
-    form.beSigned(*this);
+    AForm.beSigned(*this);
 }
 
-void Bureaucrat::executeForm(const Form &form) const
+void Bureaucrat::executeForm(const AForm &AForm) const
 {
 	try
 	{
-		form.execute(*this);
-		std::cout << *this << " executed " << form << std::endl;
+		AForm.execute(*this);
+		std::cout << *this << " executed " << AForm << std::endl;
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << *this << " couldn't execute because " << e.what() << form << std::endl;
+		std::cout << *this << " couldn't execute because " << e.what() << AForm << std::endl;
 	}
 }
 

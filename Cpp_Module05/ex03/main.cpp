@@ -7,7 +7,7 @@ int main()
 	{
 		Bureaucrat bureaucrat("Daryl", 1);
 		Intern someRandomIntern;
-		Form* rrf;
+		AForm* rrf;
 
 		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 		bureaucrat.signForm(*rrf);
@@ -25,11 +25,11 @@ int main()
 	{
 		Bureaucrat bureaucrat("Thomas", 1);
 		Intern someRandomIntern;
-		Form* form;
+		AForm* Form;
 
-		form = someRandomIntern.makeForm("presidential pardoning", "White");
-		bureaucrat.signForm(*form);
-		bureaucrat.executeForm(*form);
+		Form = someRandomIntern.makeForm("presidential pardoning", "White");
+		bureaucrat.signForm(*Form);
+		bureaucrat.executeForm(*Form);
 	}
 	catch (std::exception &e)
 	{

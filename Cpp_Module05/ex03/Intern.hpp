@@ -10,5 +10,5 @@ class Intern
 		Intern &operator=(const Intern &other);
 
 	public:
-		Form *makeForm(const std::string &formName, const std::string &formTarget);
+		AForm *makeForm(const std::string &FormName, const std::string &FormTarget);
 };

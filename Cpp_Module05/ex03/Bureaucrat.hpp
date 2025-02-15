@@ -3,7 +3,7 @@
 
 #include "AForm.hpp"
 #include <iostream>
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -18,8 +18,8 @@ class Bureaucrat
         unsigned int getGrade() const;
         void incrementGrade(unsigned int increment);
         void decrementGrade(unsigned int decrement);
-        void signForm(Form& form);
-        void executeForm(const Form &form) const;
+        void signForm(AForm& AForm);
+        void executeForm(const AForm &AForm) const;
     private:
         const std::string name;
         unsigned int grade;

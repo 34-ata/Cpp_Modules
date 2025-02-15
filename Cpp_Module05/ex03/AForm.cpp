@@ -1,8 +1,8 @@
 #include "AForm.hpp"
 
-Form::Form() : grade_to_execute(150), grade_to_sign(150), name("Default"), is_it_signed(false) {}
+AForm::AForm() : grade_to_execute(150), grade_to_sign(150), name("Default"), is_it_signed(false) {}
 
-Form::Form(const std::string& name, unsigned int grade_to_sign, unsigned int grade_to_execute) : grade_to_execute(grade_to_execute), grade_to_sign(grade_to_sign), name(name), is_it_signed(false)
+AForm::AForm(const std::string& name, unsigned int grade_to_sign, unsigned int grade_to_execute) : grade_to_execute(grade_to_execute), grade_to_sign(grade_to_sign), name(name), is_it_signed(false)
 {
     if (grade_to_sign > 150 || grade_to_sign < 1)
     {
@@ -16,29 +16,29 @@ Form::Form(const std::string& name, unsigned int grade_to_sign, unsigned int gra
     }   
 }
 
-Form::~Form(){}
+AForm::~AForm(){}
 
-std::string Form::getName() const
+std::string AForm::getName() const
 {
     return name;
 }
 
-unsigned int Form::getGradeToExecute() const
+unsigned int AForm::getGradeToExecute() const
 {
     return grade_to_execute;
 }
 
-unsigned int Form::getGradeToSign() const
+unsigned int AForm::getGradeToSign() const
 {
     return grade_to_sign;
 }
 
-bool Form::getIsItSigned() const
+bool AForm::getIsItSigned() const
 {
     return is_it_signed;
 }
 
-void Form::beSigned(Bureaucrat& bureaucrat) {
+void AForm::beSigned(Bureaucrat& bureaucrat) {
     if (bureaucrat.getGrade() > grade_to_sign) {
         std::cout << bureaucrat.getName() << " could not sign " << name << ": Bureaucrat's grade (" 
                   << bureaucrat.getGrade() << ") is lower than the required grade (" 
@@ -49,11 +49,11 @@ void Form::beSigned(Bureaucrat& bureaucrat) {
     std::cout << bureaucrat.getName() << " signed " << name << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& os, const Form& form)
+std::ostream& operator<<(std::ostream& os, const AForm& Form)
 {
-    os << "Form Name: " << form.getName() << "\n"
-       << "Grade required to sign: " << form.getGradeToSign() << "\n"
-       << "Grade required to execute: " << form.getGradeToExecute() << "\n"
-       << "Signed: " << (form.getIsItSigned() ? "True" : "False") << std::endl;
+    os << "Form Name: " << Form.getName() << "\n"
+       << "Grade required to sign: " << Form.getGradeToSign() << "\n"
+       << "Grade required to execute: " << Form.getGradeToExecute() << "\n"
+       << "Signed: " << (Form.getIsItSigned() ? "True" : "False") << std::endl;
     return os;
 }
