@@ -1,7 +1,7 @@
 NAME = convert
 CPP = c++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
-SRCS = ScalarConverter.cpp main.cpp
+SRCS = ScalarConverter.cpp main.cpp check.cpp
 
 all: $(NAME)
 
