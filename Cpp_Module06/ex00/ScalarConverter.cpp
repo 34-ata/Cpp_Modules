@@ -26,10 +26,8 @@ void convertInt(int &_int, float &_float, double &_double, char &_char, const st
     }
     else if (_str[0] == '+')
         start = 1;
-
     for (size_t i = start; i < _str.length(); ++i)
         result = result * 10 + (_str[i] - '0');
-
     if (isNegative)
         result = -result;
 
@@ -104,7 +102,6 @@ bool convertFloat(int &_int, float &_float, double &_double, char &_char, const 
         else if (_str[i] == '+')
             isExponentNegative = false;
     }
-
     if (isExponentNegative)
         exponent = -exponent;
 
@@ -199,6 +196,7 @@ bool convertDouble(int &_int, float &_float, double &_double, char &_char, const
     _int = static_cast<int>(result);
     _float = static_cast<float>(result);
     _double = result;
+
     return impossible;
 }
 
