@@ -214,9 +214,15 @@ void print(int _int, float _float, double _double, char _char, bool impossible)
         std::cout << "int: impossible" << std::endl;
     else
         std::cout << "int: " << _int << std::endl;
-
-    std::cout << "float: " << _float << "f" << std::endl;
-    std::cout << "double: " << _double << std::endl;
+    
+    std::cout << "float: " << _float;
+    if (_float == static_cast<int>(_float))
+        std::cout << ".0";
+    std::cout << "f" << std::endl;
+    std::cout << "double: " << _double;
+    if (_double == static_cast<int>(_double))
+        std::cout << ".0";
+    std::cout << std::endl;
 }
 
 void ScalarConverter::convert(const std::string &str)
