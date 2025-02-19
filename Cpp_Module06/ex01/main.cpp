@@ -21,7 +21,9 @@ int main()
 {
     Data *data1 = new Data("Hello", 42, 42.42f, 42.4242, true, 'A');
     uintptr_t raw1 = Serializer::serialize(data1);
+    std::cout << "Serialized Data 1 to uintptr_t: " << raw1 << std::endl;
     Data *data2 = Serializer::deserialize(raw1);
+    std::cout << "Deserialized Data 1 from uintptr_t: " << raw1 << std::endl;
 
     std::string expectedOutput1 =
         "Data 1:\nStr: Hello\nInt: 42\nFloat: 42.42\nDouble: 42.4242\nBoolean: True\nChar: A\n"
@@ -46,7 +48,9 @@ int main()
 
     Data *data3 = new Data("NegativeTest", -999, -999.99f, -123.456, false, 'Z');
     uintptr_t raw2 = Serializer::serialize(data3);
+    std::cout << "Serialized Data 3 to uintptr_t: " << raw2 << std::endl;
     Data *data4 = Serializer::deserialize(raw2);
+    std::cout << "Deserialized Data 3 from uintptr_t: " << raw2 << std::endl;
 
     std::string expectedOutput2 =
         "Data 3:\nStr: NegativeTest\nInt: -999\nFloat: -999.99\nDouble: -123.456\nBoolean: False\nChar: Z\n"
@@ -71,7 +75,9 @@ int main()
 
     Data *data5 = new Data("LargeTest", 1000000000, 1.23e30f, 1.23e100, true, '*');
     uintptr_t raw3 = Serializer::serialize(data5);
+    std::cout << "Serialized Data 5 to uintptr_t: " << raw3 << std::endl;
     Data *data6 = Serializer::deserialize(raw3);
+    std::cout << "Deserialized Data 5 from uintptr_t: " << raw3 << std::endl;
 
     std::string expectedOutput3 =
         "Data 5:\nStr: LargeTest\nInt: 1000000000\nFloat: 1.23e+30\nDouble: 1.23e+100\nBoolean: True\nChar: *\n"
@@ -96,7 +102,9 @@ int main()
 
     Data *data7 = new Data("SpecialChars!@#$", 123, 456.78f, 9.8765, true, '*');
     uintptr_t raw4 = Serializer::serialize(data7);
+    std::cout << "Serialized Data 7 to uintptr_t: " << raw4 << std::endl;
     Data *data8 = Serializer::deserialize(raw4);
+    std::cout << "Deserialized Data 7 from uintptr_t: " << raw4 << std::endl;
 
     std::string expectedOutput4 =
         "Data 7:\nStr: SpecialChars!@#$\nInt: 123\nFloat: 456.78\nDouble: 9.8765\nBoolean: True\nChar: *\n"
