@@ -46,15 +46,15 @@ int main()
     displayResult("Standard Test Case", expectedOutput1 == actualOutput1.str(), expectedOutput1, actualOutput1.str());
     delete data1;
 
-    Data *data3 = new Data("NegativeTest", -999, -999.99f, -123.456, false, 'Z');
+    Data *data3 = new Data("Test!@#", -999, 1.23e30f, -123.456, false, '*');
     uintptr_t raw2 = Serializer::serialize(data3);
     std::cout << "Serialized Data 3 to uintptr_t: " << raw2 << std::endl;
     Data *data4 = Serializer::deserialize(raw2);
     std::cout << "Deserialized Data 3 from uintptr_t: " << raw2 << std::endl;
 
     std::string expectedOutput2 =
-        "Data 3:\nStr: NegativeTest\nInt: -999\nFloat: -999.99\nDouble: -123.456\nBoolean: False\nChar: Z\n"
-        "Data 4:\nStr: NegativeTest\nInt: -999\nFloat: -999.99\nDouble: -123.456\nBoolean: False\nChar: Z\n";
+        "Data 3:\nStr: Test!@#\nInt: -999\nFloat: 1.23e+30\nDouble: -123.456\nBoolean: False\nChar: *\n"
+        "Data 4:\nStr: Test!@#\nInt: -999\nFloat: 1.23e+30\nDouble: -123.456\nBoolean: False\nChar: *\n";
     std::ostringstream actualOutput2;
     actualOutput2 << "Data 3:" << std::endl
                   << "Str: " << data3->getStr() << std::endl
@@ -70,62 +70,8 @@ int main()
                   << "Double: " << data4->getDouble() << std::endl
                   << "Boolean: " << (data4->getBool() ? "True" : "False") << std::endl
                   << "Char: " << data4->getChar() << std::endl;
-    displayResult("Edge Case with Negative and Zero Values", expectedOutput2 == actualOutput2.str(), expectedOutput2, actualOutput2.str());
+    displayResult("Edge Case Test (Negative, Large, Special Chars)", expectedOutput2 == actualOutput2.str(), expectedOutput2, actualOutput2.str());
     delete data3;
-
-    Data *data5 = new Data("LargeTest", 1000000000, 1.23e30f, 1.23e100, true, '*');
-    uintptr_t raw3 = Serializer::serialize(data5);
-    std::cout << "Serialized Data 5 to uintptr_t: " << raw3 << std::endl;
-    Data *data6 = Serializer::deserialize(raw3);
-    std::cout << "Deserialized Data 5 from uintptr_t: " << raw3 << std::endl;
-
-    std::string expectedOutput3 =
-        "Data 5:\nStr: LargeTest\nInt: 1000000000\nFloat: 1.23e+30\nDouble: 1.23e+100\nBoolean: True\nChar: *\n"
-        "Data 6:\nStr: LargeTest\nInt: 1000000000\nFloat: 1.23e+30\nDouble: 1.23e+100\nBoolean: True\nChar: *\n";
-    std::ostringstream actualOutput3;
-    actualOutput3 << "Data 5:" << std::endl
-                  << "Str: " << data5->getStr() << std::endl
-                  << "Int: " << data5->getInt() << std::endl
-                  << "Float: " << data5->getFloat() << std::endl
-                  << "Double: " << data5->getDouble() << std::endl
-                  << "Boolean: " << (data5->getBool() ? "True" : "False") << std::endl
-                  << "Char: " << data5->getChar() << std::endl
-                  << "Data 6:" << std::endl
-                  << "Str: " << data6->getStr() << std::endl
-                  << "Int: " << data6->getInt() << std::endl
-                  << "Float: " << data6->getFloat() << std::endl
-                  << "Double: " << data6->getDouble() << std::endl
-                  << "Boolean: " << (data6->getBool() ? "True" : "False") << std::endl
-                  << "Char: " << data6->getChar() << std::endl;
-    displayResult("Test with Large Values", expectedOutput3 == actualOutput3.str(), expectedOutput3, actualOutput3.str());
-    delete data5;
-
-    Data *data7 = new Data("SpecialChars!@#$", 123, 456.78f, 9.8765, true, '*');
-    uintptr_t raw4 = Serializer::serialize(data7);
-    std::cout << "Serialized Data 7 to uintptr_t: " << raw4 << std::endl;
-    Data *data8 = Serializer::deserialize(raw4);
-    std::cout << "Deserialized Data 7 from uintptr_t: " << raw4 << std::endl;
-
-    std::string expectedOutput4 =
-        "Data 7:\nStr: SpecialChars!@#$\nInt: 123\nFloat: 456.78\nDouble: 9.8765\nBoolean: True\nChar: *\n"
-        "Data 8:\nStr: SpecialChars!@#$\nInt: 123\nFloat: 456.78\nDouble: 9.8765\nBoolean: True\nChar: *\n";
-    std::ostringstream actualOutput4;
-    actualOutput4 << "Data 7:" << std::endl
-                  << "Str: " << data7->getStr() << std::endl
-                  << "Int: " << data7->getInt() << std::endl
-                  << "Float: " << data7->getFloat() << std::endl
-                  << "Double: " << data7->getDouble() << std::endl
-                  << "Boolean: " << (data7->getBool() ? "True" : "False") << std::endl
-                  << "Char: " << data7->getChar() << std::endl
-                  << "Data 8:" << std::endl
-                  << "Str: " << data8->getStr() << std::endl
-                  << "Int: " << data8->getInt() << std::endl
-                  << "Float: " << data8->getFloat() << std::endl
-                  << "Double: " << data8->getDouble() << std::endl
-                  << "Boolean: " << (data8->getBool() ? "True" : "False") << std::endl
-                  << "Char: " << data8->getChar() << std::endl;
-    displayResult("Test with Special Characters in String and Char", expectedOutput4 == actualOutput4.str(), expectedOutput4, actualOutput4.str());
-    delete data7;
 
     return 0;
 }

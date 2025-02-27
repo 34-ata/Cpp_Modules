@@ -8,7 +8,8 @@ Data::Data(const std::string &strValue, int intValue, float floatValue, double d
 Data::Data(const Data &other)
     : str(other.str), number(other.number), decimal(other.decimal), precision(other.precision), isActive(other.isActive), letter(other.letter) {}
 
-Data &Data::operator=(const Data &other) {
+Data &Data::operator=(const Data &other)
+{
     if (this != &other) {
         str = other.str;
         number = other.number;
