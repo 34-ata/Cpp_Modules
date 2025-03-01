@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Array.tpp"
+#include "Array.hpp"
 
 int main()
 {
