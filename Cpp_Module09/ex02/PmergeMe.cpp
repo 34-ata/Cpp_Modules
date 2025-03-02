@@ -18,8 +18,7 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &copy)
 }
 
 
-
-int check_if_number(const std::string& value)
+int checkIfNumber(const std::string& value)
 {
     for (int i = 0; i < (int)value.length(); i++)
     {
@@ -32,11 +31,11 @@ int check_if_number(const std::string& value)
     return 0;
 }
 
-int PmergeMe::validate_and_fill(int argc, char **argv)
+int PmergeMe::validateAndFill(int argc, char **argv)
 {
     for (int i = 1; i < argc; i++)
     {
-        if (check_if_number(argv[i]))
+        if (checkIfNumber(argv[i]))
             return 1;
         int value = std::atoi(argv[i]);
         if (value < 1)
@@ -52,7 +51,7 @@ int PmergeMe::validate_and_fill(int argc, char **argv)
 
 void PmergeMe::executer(int ac, char **av)
 {
-    if (validate_and_fill(ac, av))
+    if (validateAndFill(ac, av))
         return ;
     for (size_t i = 0; i < vec.size(); ++i)
     {

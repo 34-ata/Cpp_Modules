@@ -16,7 +16,7 @@ class PmergeMe
         PmergeMe(const PmergeMe &cpy);
         PmergeMe &operator=(const PmergeMe &cpy);
     public:
-        int validate_and_fill(int, char**);
+        int validateAndFill(int, char**);
         void executer(int, char**);
 };
 
