@@ -18,6 +18,7 @@ class PmergeMe
     public:
         int validateAndFill(int, char**);
         void executer(int, char**);
+        std::vector<int> sortVec(void);
 };
 
 

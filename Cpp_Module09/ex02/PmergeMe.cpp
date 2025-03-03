@@ -57,9 +57,34 @@ int PmergeMe::validateAndFill(int argc, char **argv)
     return 0;
 }
 
+std::vector<int> mergeVec(std::vector<int> &left, std::vector<int> &right)
+{
+    std::vector<int> res;
+    (void)left;
+    (void)right;
+    return res;
+}
+
+std::vector<int> PmergeMe::sortVec(void)
+{
+    if (vec.size() <= 1) return vec;
+
+    std::vector<int> sortedVec;
+    int mid = vec.size() / 2;
+    std::vector<int> left(vec.begin(), vec.begin() + mid);
+    std::vector<int> right(vec.begin() + mid, vec.end());
+
+    return mergeVec(left, right); 
+}
+
 void PmergeMe::executer(int ac, char **av)
 {
     if (validateAndFill(ac, av))
         return ;
+    std::cout << "Vector container before sorting: " << std::endl;
     printContainer(vec);
+    std::cout << "List container before sorting: " << std::endl;
+    printContainer(lst);
+    std::cout << "Vector container after sorting: " << std::endl;
+    sortVec();
 }
