@@ -17,6 +17,14 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &copy)
     return *this;
 }
 
+template <typename T>
+void printContainer(T &container)
+{
+    for (typename T::iterator it = container.begin(); it != container.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+}
+
 
 int checkIfNumber(const std::string& value)
 {
@@ -53,9 +61,5 @@ void PmergeMe::executer(int ac, char **av)
 {
     if (validateAndFill(ac, av))
         return ;
-    for (size_t i = 0; i < vec.size(); ++i)
-    {
-        std::cout << vec[i] << " ";
-    }
-    std::cout << std::endl;
+    printContainer(vec);
 }
